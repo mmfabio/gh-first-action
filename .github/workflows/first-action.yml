@@ -20,5 +20,5 @@ jobs:
           echo "repository variable : ${{ vars.VAR_TEST1 }}"
           echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
       - name: If environment == PROD
-        if: ${{ github.event.inputs.environment == PROD }}
+        if: github.event.inputs.environment == 'PROD'
         run: echo "ENVIRONMENT IS PROD!"
