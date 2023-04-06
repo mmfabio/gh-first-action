@@ -1,5 +1,14 @@
 name: First Workflow
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: Environment
+        options:
+          - TEST
+          - INT
+          - PROD
 jobs:
   first-job:
     runs-on: self-hosted
@@ -7,5 +16,6 @@ jobs:
     steps:
       - name: Use variables
         run: |
-          echo "repository variable : ${{ vars.VAR_TEST1 }}"
-          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
+          echo "selected environment : ${{ github.event.inputs.environment }}"
+#          echo "repository variable : ${{ vars.VAR_TEST1 }}"
+#          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
