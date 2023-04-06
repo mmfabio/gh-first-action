@@ -12,10 +12,10 @@ on:
 jobs:
   first-job:
     runs-on: self-hosted
-    environment: TEST
+    environment: ${{ github.event.inputs.environment }}
     steps:
       - name: Use variables
         run: |
           echo "selected environment : ${{ github.event.inputs.environment }}"
-#          echo "repository variable : ${{ vars.VAR_TEST1 }}"
-#          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
+          echo "repository variable : ${{ vars.VAR_TEST1 }}"
+          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
