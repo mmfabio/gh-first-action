@@ -3,8 +3,9 @@ on: workflow_dispatch
 jobs:
   first-job:
     runs-on: self-hosted
+    environment: TEST
     steps:
-      - name: Print greeting
-        run: echo "Hello World!"
-      - name: Print goodbye
-        run: echo "Done - Bye!"
+      - name: Use variables
+        run: |
+          echo "repository variable : ${{ vars.VAR_TEST1 }}"
+          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
