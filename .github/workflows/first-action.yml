@@ -27,6 +27,7 @@ jobs:
           echo `cat ./VERSION`
           BUILD_VERSION=`cat ./VERSION`
           echo "FINAL VALUE: $BUILD_VERSION"
+          echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
 #          echo "selected environment : ${{ github.event.inputs.environment }}"
 #          echo "repository variable : ${{ vars.VAR_TEST1 }}"
 #          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
