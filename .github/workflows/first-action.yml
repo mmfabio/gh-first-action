@@ -25,11 +25,11 @@ jobs:
         id: set_build_version
         run: |
           BUILD_VERSION=`cat ./VERSION`
-          echo "${{ env.BUILD_VERSION }}+${{ github.run_number }}" >> $GITHUB_OUTPUT
+          echo "$BUILD_VERSION+${{ github.run_number }}" >> $GITHUB_OUTPUT
 
       - name: read variables
         run: |
-          echo "OUTPUTS: ${{ steps.set_build_version.outputs.build_version }}"
+          echo "OUTPUTS: ${{ steps.set_build_version.outputs.BUILD_VERSION }}"
           echo "${{ github.ref_name }}"
           echo "${{ github.run_number }}"
 
