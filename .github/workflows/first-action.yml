@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Use variables
         run: |
+          $BUILD_VERSION=cat ./VERSION
+          echo $BUILD_VERSION
           echo "selected environment : ${{ github.event.inputs.environment }}"
           echo "repository variable : ${{ vars.VAR_TEST1 }}"
           echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
