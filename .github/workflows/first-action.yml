@@ -21,7 +21,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@master
 
-      - name: Use variables
+      - name: set variables
         id: set_build_version
         run: |
           echo "INITIAL VALUE: $BUILD_VERSION"
@@ -32,6 +32,11 @@ jobs:
           echo "OUTPUTS: ${{ steps.set_build_version.outputs.build_version }}"
           echo "${{ github.ref_name }}"
           echo "${{ github.run_number }}"
+
+      - name: read variables
+        run: |
+          echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
+          echo "OUTPUTS: ${{ steps.set_build_version.outputs.build_version }}"
 
 #          echo "selected environment : ${{ github.event.inputs.environment }}"
 #          echo "repository variable : ${{ vars.VAR_TEST1 }}"
