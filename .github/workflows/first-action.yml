@@ -22,11 +22,14 @@ jobs:
         uses: actions/checkout@master
 
       - name: Use variables
+        id: set_build_version
         run: |
           echo "INITIAL VALUE: $BUILD_VERSION"
           BUILD_VERSION=`cat ./VERSION` >> $GITHUB_ENV
           echo "FINAL VALUE: $BUILD_VERSION"
           echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
+          echo "::set-output name=build_version::$BUILD_VERSION"
+          echo "OUTPUTS: ${{ steps.set_build_version.outputs.build_version }}"
           echo "${{ github.ref_name }}"
           echo "${{ github.run_number }}"
 
