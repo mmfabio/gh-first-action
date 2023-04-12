@@ -10,12 +10,12 @@ on:
 #          - INT
 #          - PROD
 
-env:
-  BUILD_VERSION: 0.0.0
-
 jobs:
   first-job:
     runs-on: self-hosted
+    env:
+      BUILD_VERSION: 0.0.0
+
 #    environment: ${{ github.event.inputs.environment }}
     steps:
       - name: checkout repo
