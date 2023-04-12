@@ -24,19 +24,14 @@ jobs:
       - name: set variables
         id: set_build_version
         run: |
-          echo "INITIAL VALUE: $BUILD_VERSION"
-          BUILD_VERSION=`cat ./VERSION` >> $GITHUB_ENV
-          echo "FINAL VALUE: $BUILD_VERSION"
-          echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
-          echo "build_version=$BUILD_VERSION" >> $GITHUB_OUTPUT
-          echo "OUTPUTS: ${{ steps.set_build_version.outputs.build_version }}"
-          echo "${{ github.ref_name }}"
-          echo "${{ github.run_number }}"
+          BUILD_VERSION=`cat ./VERSION`
+          echo "${{ env.BUILD_VERSION }}+${{ github.run_number }}" >> $GITHUB_OUTPUT
 
       - name: read variables
         run: |
-          echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
           echo "OUTPUTS: ${{ steps.set_build_version.outputs.build_version }}"
+          echo "${{ github.ref_name }}"
+          echo "${{ github.run_number }}"
 
 #          echo "selected environment : ${{ github.event.inputs.environment }}"
 #          echo "repository variable : ${{ vars.VAR_TEST1 }}"
