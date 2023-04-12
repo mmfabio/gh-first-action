@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "INITIAL VALUE: $BUILD_VERSION"
           echo `cat ./VERSION`
-          $BUILD_VERSION=`cat ./VERSION`
+          BUILD_VERSION=`cat ./VERSION`
           echo "FINAL VALUE: $BUILD_VERSION"
 #          echo "selected environment : ${{ github.event.inputs.environment }}"
 #          echo "repository variable : ${{ vars.VAR_TEST1 }}"
