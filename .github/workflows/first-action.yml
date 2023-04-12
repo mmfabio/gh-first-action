@@ -9,12 +9,12 @@ on:
 #          - TEST
 #          - INT
 #          - PROD
+env:
+  BUILD_VERSION: 0.0.0
 
 jobs:
   first-job:
     runs-on: self-hosted
-#    env:
-#      BUILD_VERSION: 0.0.0
 
 #    environment: ${{ github.event.inputs.environment }}
     steps:
@@ -23,14 +23,12 @@ jobs:
 
       - name: Use variables
         run: |
+          echo "INITIAL VALUE: $BUILD_VERSION"
           BUILD_VERSION=`cat ./VERSION` >> $GITHUB_ENV
           echo "FINAL VALUE: $BUILD_VERSION"
           echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
-          echo "${{ github.repository }}"
           echo "${{ github.ref_name }}"
-
-#          echo "INITIAL VALUE: $BUILD_VERSION"
-#          echo `cat ./VERSION`
+          echo "${{ github.run_number }}"
 
 #          echo "selected environment : ${{ github.event.inputs.environment }}"
 #          echo "repository variable : ${{ vars.VAR_TEST1 }}"
