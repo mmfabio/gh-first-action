@@ -13,8 +13,8 @@ on:
 jobs:
   first-job:
     runs-on: self-hosted
-    env:
-      BUILD_VERSION: 0.0.0
+#    env:
+#      BUILD_VERSION: 0.0.0
 
 #    environment: ${{ github.event.inputs.environment }}
     steps:
@@ -23,11 +23,13 @@ jobs:
 
       - name: Use variables
         run: |
-          echo "INITIAL VALUE: $BUILD_VERSION"
-          echo `cat ./VERSION`
           BUILD_VERSION=`cat ./VERSION`
           echo "FINAL VALUE: $BUILD_VERSION"
           echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
+
+#          echo "INITIAL VALUE: $BUILD_VERSION"
+#          echo `cat ./VERSION`
+
 #          echo "selected environment : ${{ github.event.inputs.environment }}"
 #          echo "repository variable : ${{ vars.VAR_TEST1 }}"
 #          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
