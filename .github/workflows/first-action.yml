@@ -24,8 +24,9 @@ jobs:
       - name: set variables
         id: set_build_version
         run: |
-          BUILD_VERSION=`cat ./VERSION`
-          echo "$BUILD_VERSION"+"${{ github.run_number }}" >> $GITHUB_OUTPUT
+          BUILD_VERSION=`cat ./VERSION`+"${{ github.run_number }}"
+          echo "$BUILD_VERSION"
+#          >> $GITHUB_OUTPUT
 
       - name: read variables
         run: |
