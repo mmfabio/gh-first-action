@@ -24,7 +24,7 @@ jobs:
       - name: Use variables
         run: |
           echo "INITIAL VALUE: $BUILD_VERSION"
-          echo cat ./VERSION
+          echo `cat ./VERSION`
           cat ./VERSION >> $BUILD_VERSION
           echo "FINAL VALUE: $BUILD_VERSION"
 #          echo "selected environment : ${{ github.event.inputs.environment }}"
