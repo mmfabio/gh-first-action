@@ -23,11 +23,11 @@ jobs:
 
       - name: Use variables
         run: |
-          BUILD_VERSION=`cat ./VERSION`
+          BUILD_VERSION=`cat ./VERSION` >> $GITHUB_ENV
           echo "FINAL VALUE: $BUILD_VERSION"
           echo "ENV VALUE : ${{ env.BUILD_VERSION }}"
           echo "${{ github.repository }}"
-          echo "{{ github.ref_name }}"
+          echo "${{ github.ref_name }}"
 
 #          echo "INITIAL VALUE: $BUILD_VERSION"
 #          echo `cat ./VERSION`
