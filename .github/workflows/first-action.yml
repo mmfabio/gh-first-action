@@ -14,6 +14,9 @@ jobs:
     runs-on: self-hosted
     environment: ${{ github.event.inputs.environment }}
     steps:
+      - name: checkout repo
+        uses: actions/checkout@master
+
       - name: Use variables
         run: |
           $BUILD_VERSION=cat ./VERSION
