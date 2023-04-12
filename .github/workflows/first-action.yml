@@ -1,14 +1,14 @@
 name: First Workflow
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        type: choice
-        description: Environment
-        options:
-          - TEST
-          - INT
-          - PROD
+#    inputs:
+#      environment:
+#        type: choice
+#        description: Environment
+#        options:
+#          - TEST
+#          - INT
+#          - PROD
 
 env:
   BUILD_VERSION: 0.0.0
@@ -16,19 +16,20 @@ env:
 jobs:
   first-job:
     runs-on: self-hosted
-    environment: ${{ github.event.inputs.environment }}
+#    environment: ${{ github.event.inputs.environment }}
     steps:
       - name: checkout repo
         uses: actions/checkout@master
 
       - name: Use variables
         run: |
-          echo $BUILD_VERSION
+          echo "INITIAL VALUE: $BUILD_VERSION"
+          echo cat ./VERSION
           cat ./VERSION >> $BUILD_VERSION
-          echo $BUILD_VERSION
-          echo "selected environment : ${{ github.event.inputs.environment }}"
-          echo "repository variable : ${{ vars.VAR_TEST1 }}"
-          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
-      - name: If environment == PROD
-        if: github.event.inputs.environment == 'PROD'
-        run: echo "ENVIRONMENT IS PROD!"
+          echo "FINAL VALUE: $BUILD_VERSION"
+#          echo "selected environment : ${{ github.event.inputs.environment }}"
+#          echo "repository variable : ${{ vars.VAR_TEST1 }}"
+#          echo "repository secret : ${{ secrets.SECRET_TEST1 }}"
+#      - name: If environment == PROD
+#        if: github.event.inputs.environment == 'PROD'
+#        run: echo "ENVIRONMENT IS PROD!"
